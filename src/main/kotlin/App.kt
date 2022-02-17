@@ -1,3 +1,7 @@
+import ace.AceOptions
+import ace.AceAnnotation
+import ace.AceMarker
+import ace.aceEditor
 import kotlinx.browser.window
 import kotlinx.coroutines.MainScope
 import kotlinx.coroutines.await
@@ -15,7 +19,7 @@ val app = fc<Props> {
 
     var jsonExample: String? by useState("{ \"bunchOCrap\":\"\"\n\n\n}")
 
-    var marker : Array<Marker> by useState(emptyArray())
+    var marker : Array<AceMarker> by useState(emptyArray())
 
     val editorRef = useRef(null)
 
@@ -42,7 +46,7 @@ val app = fc<Props> {
     }
 
     val addMarker = { line : Int ->
-       marker = if (line == 0 ) emptyArray() else arrayOf(Marker(line - 1,0,line,0, "editor-focus-error", "line", true));
+       marker = if (line == 0 ) emptyArray() else arrayOf(AceMarker(line - 1,0,line,0, "editor-focus-error", "line", true));
     }
 
     h1 {
@@ -76,7 +80,7 @@ val app = fc<Props> {
                 ref = editorRef
                 mode = "json"
                 theme = "github"
-                annotations = arrayOf(Annotation(0,0,"nyah", "error"))
+                annotations = arrayOf(AceAnnotation(0,0,"nyah", "error"))
                 value = jsonExample
                 setOptions = AceOptions(false)
                 markers = marker

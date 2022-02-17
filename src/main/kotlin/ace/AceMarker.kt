@@ -1,4 +1,6 @@
-data class Marker(
+package ace
+
+data class AceMarker(
     val startRow: Int,
     val startCol: Int,
     val endRow: Int,
