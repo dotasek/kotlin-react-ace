@@ -21,23 +21,20 @@ kotlin {
     }
 }
 
+val kotlinWrappersVersion = "0.0.1-pre.264-kotlin-1.5.31"
+
 dependencies {
+    implementation(enforcedPlatform("org.jetbrains.kotlin-wrappers:kotlin-wrappers-bom:$kotlinWrappersVersion"))
 
     //React, React DOM + Wrappers (chapter 3)
-    implementation("org.jetbrains.kotlin-wrappers:kotlin-react:17.0.2-pre.264-kotlin-1.5.31")
-    implementation("org.jetbrains.kotlin-wrappers:kotlin-react-dom:17.0.2-pre.264-kotlin-1.5.31")
+    implementation("org.jetbrains.kotlin-wrappers:kotlin-react")
+    implementation("org.jetbrains.kotlin-wrappers:kotlin-react-dom")
     implementation(npm("react", "17.0.2"))
     implementation(npm("react-dom", "17.0.2"))
 
     //Kotlin Styled (chapter 3)
-    implementation("org.jetbrains.kotlin-wrappers:kotlin-styled:5.3.3-pre.264-kotlin-1.5.31")
+    implementation("org.jetbrains.kotlin-wrappers:kotlin-styled")
     implementation(npm("styled-components", "~5.3.3"))
-
-    //Video Player (chapter 7)
-    implementation(npm("react-youtube-lite", "1.1.0"))
-
-    //Share Buttons (chapter 7)
-    implementation(npm("react-share", "4.4.0"))
 
     //Coroutines & serialization (chapter 8)
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.5.2")
