@@ -37,14 +37,12 @@ val app = fc<Props> {
 
     val gotoLine = { line : Int ->
         editorRef.asDynamic().current.editor.gotoLine(line)
-    }
-
-    val scrollToLine = { line : Int ->
         editorRef.asDynamic().current.editor.scrollToLine(line, true, true, null)
+
     }
 
     val addMarker = { line : Int ->
-       marker = if (line == 0 ) emptyArray() else arrayOf(Marker(line,0,line+1,0, "editor-focus-error", "line", true));
+       marker = if (line == 0 ) emptyArray() else arrayOf(Marker(line - 1,0,line,0, "editor-focus-error", "line", true));
     }
 
     h1 {
